@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>3학년 영어 낱말 여행 🌱</title>
+<title>영어 낱말 여행 🌱</title>
 <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#FFF9F0;--card:#fff;--apricot:#F6B17A;--apricot-soft:#FFE9D6;--sage:#7FB069;--sage-soft:#E6F0DD;--sky:#8FC1DA;--sky-soft:#E2F0F6;--amber:#E8A33D;--ink:#5A4632;--ink-soft:#9A8A77;--line:#F0E4D4;}
@@ -165,7 +165,7 @@ const SVG_FIG=`<svg width="1em" height="1em" viewBox="0 0 64 64" style="vertical
 const SVG_ERASER=`<svg width="1em" height="1em" viewBox="0 0 64 64" style="vertical-align:middle"><rect x="12" y="22" width="40" height="22" rx="6" fill="#F4A7C0"/><path d="M18 22h28a6 6 0 0 1 6 6v3H12v-3a6 6 0 0 1 6-6z" fill="#8FC1DA"/></svg>`;
 const SVG_GLUE=`<svg width="1em" height="1em" viewBox="0 0 64 64" style="vertical-align:middle"><rect x="24" y="26" width="16" height="30" rx="3" fill="#F6B17A"/><rect x="24" y="39" width="16" height="7" fill="#fff" opacity=".55"/><rect x="26" y="12" width="12" height="16" rx="2" fill="#7FB069"/><ellipse cx="32" cy="12" rx="6" ry="3" fill="#FFF3E2"/></svg>`;
 const SVG_CASE=`<svg width="1em" height="1em" viewBox="0 0 64 64" style="vertical-align:middle"><rect x="10" y="26" width="44" height="22" rx="8" fill="#8FC1DA"/><rect x="10" y="34" width="44" height="14" rx="6" fill="#6FA8C8"/><rect x="20" y="20" width="6" height="10" rx="3" fill="#F6B17A"/><rect x="30" y="18" width="6" height="12" rx="3" fill="#7FB069"/><rect x="40" y="21" width="6" height="9" rx="3" fill="#E8A33D"/></svg>`;
-const WORDS={
+const WORDS_G3={
  "사물":[{en:"bag",ko:"가방",e:"🎒"},{en:"ball",ko:"공",e:"⚽"},{en:"car",ko:"자동차",e:"🚗"},{en:"chair",ko:"의자",e:"🪑"},{en:"clock",ko:"시계",e:"🕐"},{en:"cup",ko:"컵",e:"☕"},{en:"doll",ko:"인형",e:"🧸"},{en:"big",ko:"큰",e:"🔵"},{en:"small",ko:"작은",e:"🔹"}],
  "동작1":[{en:"sit",ko:"앉다",e:"🧎"},{en:"stand",ko:"서다",e:"🧍"},{en:"open",ko:"열다",e:"📂"},{en:"close",ko:"닫다",e:"🚪"},{en:"come",ko:"오다",e:"🙋"},{en:"look",ko:"보다",e:"👀"},{en:"run",ko:"달리다",e:"🏃"},{en:"jump",ko:"뛰다",e:"🤸"}],
  "동작2":[{en:"catch",ko:"잡다",e:"🧤"},{en:"climb",ko:"오르다",e:"🧗"},{en:"dance",ko:"춤추다",e:"💃"},{en:"fly",ko:"날다",e:"🕊️"},{en:"kick",ko:"차다",e:"🦵"},{en:"ski",ko:"스키 타다",e:"⛷️"},{en:"slide",ko:"미끄럼 타다",e:"🛝"},{en:"swim",ko:"수영하다",e:"🏊"}],
@@ -177,6 +177,26 @@ const WORDS={
  "날씨":[{en:"sunny",ko:"맑은",e:"☀️"},{en:"cloudy",ko:"흐린",e:"☁️"},{en:"raining",ko:"비 오는",e:"🌧️"},{en:"snowing",ko:"눈 오는",e:"🌨️"},{en:"windy",ko:"바람 부는",e:"🌬️"},{en:"hot",ko:"더운",e:"🥵"},{en:"cold",ko:"추운",e:"🥶"},{en:"hat",ko:"모자",e:"🎩"},{en:"snowman",ko:"눈사람",e:"⛄"}],
  "수":[{en:"one",ko:"1",e:"1️⃣"},{en:"two",ko:"2",e:"2️⃣"},{en:"three",ko:"3",e:"3️⃣"},{en:"four",ko:"4",e:"4️⃣"},{en:"five",ko:"5",e:"5️⃣"},{en:"six",ko:"6",e:"6️⃣"},{en:"seven",ko:"7",e:"7️⃣"},{en:"eight",ko:"8",e:"8️⃣"},{en:"nine",ko:"9",e:"9️⃣"},{en:"ten",ko:"10",e:"🔟"}]
 };
+const WORDS_G4={
+ "가족":[{en:"father",ko:"아버지",e:"👨"},{en:"mother",ko:"어머니",e:"👩"},{en:"brother",ko:"형·남동생",e:"👦"},{en:"sister",ko:"누나·여동생",e:"👧"},{en:"grandfather",ko:"할아버지",e:"👴"},{en:"grandmother",ko:"할머니",e:"👵"},{en:"baby",ko:"아기",e:"👶"},{en:"family",ko:"가족",e:"👪"}],
+ "몸":[{en:"face",ko:"얼굴",e:"😀"},{en:"eye",ko:"눈",e:"👁️"},{en:"ear",ko:"귀",e:"👂"},{en:"nose",ko:"코",e:"👃"},{en:"mouth",ko:"입",e:"👄"},{en:"hand",ko:"손",e:"✋"},{en:"foot",ko:"발",e:"🦶"},{en:"hair",ko:"머리카락",e:"💇"}],
+ "음식":[{en:"rice",ko:"밥",e:"🍚"},{en:"soup",ko:"국",e:"🍲"},{en:"milk",ko:"우유",e:"🥛"},{en:"egg",ko:"달걀",e:"🥚"},{en:"fish",ko:"생선",e:"🐟"},{en:"chicken",ko:"닭고기",e:"🍗"},{en:"fruit",ko:"과일",e:"🍓"},{en:"bread",ko:"빵",e:"🍞"}],
+ "장소":[{en:"school",ko:"학교",e:"🏫"},{en:"park",ko:"공원",e:"🏞️"},{en:"store",ko:"가게",e:"🏪"},{en:"library",ko:"도서관",e:"📚"},{en:"hospital",ko:"병원",e:"🏥"},{en:"home",ko:"집",e:"🏠"},{en:"restaurant",ko:"식당",e:"🍴"},{en:"playground",ko:"놀이터",e:"🛝"}],
+ "하루 일과":[{en:"eat",ko:"먹다",e:"🍽️"},{en:"study",ko:"공부하다",e:"📖"},{en:"play",ko:"놀다",e:"🎮"},{en:"sleep",ko:"자다",e:"😴"},{en:"read",ko:"읽다",e:"📕"},{en:"write",ko:"쓰다",e:"✍️"},{en:"watch",ko:"보다",e:"📺"},{en:"run",ko:"달리다",e:"🏃"}],
+ "시간":[{en:"morning",ko:"아침",e:"🌅"},{en:"afternoon",ko:"오후",e:"🌤️"},{en:"evening",ko:"저녁",e:"🌆"},{en:"night",ko:"밤",e:"🌙"},{en:"today",ko:"오늘",e:"📅"},{en:"weekend",ko:"주말",e:"🎉"}]
+};
+// 학년에 따라 낱말 묶음을 고른다. (기본 3학년)
+var GRADE = 3;
+try { var _sg = localStorage.getItem('vocab_grade'); if(_sg) GRADE = Number(_sg)||3; } catch(e){}
+var WORDS = (GRADE===4) ? WORDS_G4 : WORDS_G3;
+function setGrade(g){
+  GRADE = (Number(g)===4)?4:3;
+  try{ localStorage.setItem('vocab_grade', String(GRADE)); }catch(e){}
+  WORDS = (GRADE===4) ? WORDS_G4 : WORDS_G3;
+  UNITS = Object.keys(WORDS);
+  S.unit = UNITS[0]; S.idx=0; S.met={};
+  render();
+}
 let UNITS=Object.keys(WORDS);
 
 /* ===== 흐름 ===== */
@@ -213,19 +233,18 @@ async function gas(action,payload){
   if(!GAS_URL)return null;
   try{const r=await fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({action},payload||{}))});const j=await r.json();return j.success?j.data:null;}catch(e){return null;}
 }
-function gasRead(action,payload){
-  return new Promise(function(resolve){
-    if(!GAS_URL){resolve(null);return;}
-    var nm="__jp_"+Date.now()+"_"+Math.floor(Math.random()*99999);
-    var p=payload?("&p="+encodeURIComponent(JSON.stringify(payload))):"";
-    var url=GAS_URL+(GAS_URL.indexOf("?")>-1?"&":"?")+"action="+encodeURIComponent(action)+p+"&callback="+nm;
-    var sc=document.createElement("script");var done=false;
-    function clean(){try{delete window[nm];}catch(e){window[nm]=undefined;}if(sc&&sc.parentNode)sc.parentNode.removeChild(sc);}
-    window[nm]=function(j){if(done)return;done=true;clean();resolve(j&&j.success?j.data:null);};
-    sc.onerror=function(){if(done)return;done=true;clean();resolve(null);};
-    sc.src=url;document.head.appendChild(sc);
-    setTimeout(function(){if(!done){done=true;clean();resolve(null);}},12000);
-  });
+// 기록을 저장하고, 연결된 상태에서 실패하면 학생에게 분명히 알린다.
+async function saveRecordSafe(payload){
+  if(!GAS_URL){ return false; }
+  try{
+    const r=await fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({action:"saveRecord"},payload||{}))});
+    const j=await r.json();
+    if(j&&j.success){ return true; }
+    throw new Error("save fail");
+  }catch(e){
+    toast("기록을 저장하지 못했어요. 인터넷 연결을 확인하고 다시 해 주세요.");
+    return false;
+  }
 }
 function nowStr(){return new Date().toLocaleString('ko-KR');}
 
@@ -246,15 +265,27 @@ function render(){
 async function stStart(m){
   m.innerHTML=`<div class="h1">Hello! 🌱</div><div class="sub">오늘 영어 낱말 여행을 함께 떠나요.</div>
   <div class="center">
+    <div style="font-size:36px;margin-bottom:6px">학년을 골라요 🎒</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-bottom:10px">
+      <button class="btn ${GRADE===3?'':'soft'}" style="font-size:24px;padding:12px 28px" onclick="setGrade(3)">3학년</button>
+      <button class="btn ${GRADE===4?'':'soft'}" style="font-size:24px;padding:12px 28px" onclick="setGrade(4)">4학년</button>
+    </div>
     <div style="font-size:40px">이름을 골라 주세요 🙂</div>
     <select class="select" id="nameSel"><option value="">— 이름 선택 —</option></select>
     <button class="btn" onclick="startGo()" style="font-size:31px;padding:16px 40px">시작하기 ▶</button>
-    <div class="recnote" id="nameHint">이름을 골라 주세요.</div>
+    <div class="recnote" id="nameHint">${GRADE}학년으로 시작해요. 이름을 골라 주세요.</div>
     ${isStudent?"":'<button class="btn soft" onclick="openSettings()" style="font-size:21px;padding:11px 24px">⚙️ 선생님 설정</button>'}
   </div>`;
   const sel=$("#nameSel");
-  let names=await gasRead("getNames");
-  if(!names||!names.length){names=[];for(let i=1;i<=30;i++)names.push("학생"+i);}
+  let names = GAS_URL ? await gas("getNames") : null;
+  if(!names||!names.length){
+    if(isStudent){
+      sel.innerHTML='<option value="">명단을 불러오지 못했어요</option>';
+      toast("우리 반 명단을 불러오지 못했어요. 인터넷을 확인하고 새로고침해 주세요.");
+      return;
+    }
+    names=[];for(let i=1;i<=30;i++)names.push("학생"+i);
+  }
   names.forEach(n=>{const o=document.createElement("option");o.value=n;o.textContent=n;sel.appendChild(o);});
 }
 let micReady=false;
@@ -384,7 +415,7 @@ async function toggleRec(){
       const dataUrl=await blobToDataUrl(blob);
       const w=words()[S.idx];const fn=S.name+"_"+w.en+"_"+Date.now()+".webm";
       let url="";if(GAS_URL){url=await gas("uploadAudio",{dataUrl,filename:fn})||"";}
-      await gas("saveRecord",{data:{날짜:nowStr(),이름:S.name,활동:"따라 말하고 녹음",단원:S.unit,음성텍스트:($("#recKbd")&&$("#recKbd").value.trim())||w.en,음성파일URL:url}});
+      await saveRecordSafe({data:{날짜:nowStr(),이름:S.name,활동:"따라 말하고 녹음",학년:GRADE,단원:S.unit,음성텍스트:($("#recKbd")&&$("#recKbd").value.trim())||w.en,음성파일URL:url}});
       toast("잘 따라 말했어요 🌱");note.textContent=url?"녹음을 선생님 시트에 저장했어요 🎵":(GAS_URL?"저장했어요(녹음 링크는 실기기에서 만들어져요).":"연결 전이라 이 기기에만 기록돼요. 잘했어요 🌱");
       stream.getTracks().forEach(t=>t.stop());};
     mediaRec.start();recing=true;btn.classList.add("rec");note.textContent="녹음 중… 다시 누르면 멈춰요.";
@@ -430,7 +461,7 @@ async function saveReflect(){
   S.reason=($("#reason")&&$("#reason").value.trim())||"";
   if(!S.star&&!S.reason){toast("별 하나, 또는 한 줄을 남겨 볼까요?");return;}
   const got=Object.keys(S.met).length;
-  await gas("saveRecord",{data:{날짜:nowStr(),이름:S.name,활동:"돌아보기",단원:S.unit,별점:S.star,한줄이유:S.reason,모은낱말:got}});
+  await saveRecordSafe({data:{날짜:nowStr(),이름:S.name,활동:"돌아보기",학년:GRADE,단원:S.unit,별점:S.star,한줄이유:S.reason,모은낱말:got}});
   toast("오늘의 돌아보기를 남겼어요 🌱");go(1);
 }
 
@@ -450,15 +481,49 @@ function stSummary(m){
 /* 설정 */
 function openSettings(){$("#gasInput").value=GAS_URL;if(GAS_URL){$("#linkArea").style.display="block";$("#linkOut").value=entryLink();}$("#overlay").classList.add("show");}
 function closeSettings(){$("#overlay").classList.remove("show");}
-function saveSettings(){GAS_URL=$("#gasInput").value.trim();lsSet("v3_gas",GAS_URL);if(GAS_URL){$("#linkArea").style.display="block";$("#linkOut").value=entryLink();}toast(GAS_URL?"연결했어요. 이름을 다시 불러와요.":"연결을 비웠어요");if(S.step===0)render();}
+function saveSettings(){
+  var url=$("#gasInput").value.trim();
+  if(!url){ GAS_URL=""; lsSet("v3_gas",""); toast("연결을 비웠어요"); if(S.step===0)render(); return; }
+  if(!/^https:\/\/script\.google\.com\/.*\/exec/.test(url)){ toast("…/exec 로 끝나는 주소를 넣어 주세요."); return; }
+  toast("연결을 확인하는 중이에요...");
+  var prev=GAS_URL; GAS_URL=url;
+  gas("getNames").then(function(names){
+    if(!Array.isArray(names)){ GAS_URL=prev; toast("연결이 안 됐어요. 주소와 배포 권한(모든 사용자)을 확인해 주세요."); return; }
+    lsSet("v3_gas",url);
+    var bar=document.getElementById("__demoBar"); if(bar&&bar.parentNode) bar.parentNode.removeChild(bar);
+    $("#linkArea").style.display="block"; $("#linkOut").value=entryLink();
+    toast("연결했어요. 이름을 다시 불러와요.");
+    if(S.step===0)render();
+  });
+}
 
 renderProg();render();
 </script>
+
 <script>
-(function(){
-  function isDemo(){ try{ if(/[#&]c=/.test(location.hash||'')) return false; for(var j=0;j<localStorage.length;j++){ var k=localStorage.key(j)||''; if(/exec|gas|serverurl|sheet_api|endpoint/i.test(k) && localStorage.getItem(k)) return false; } return true; }catch(e){ return true; } }
-  function show(){ if(document.getElementById('__demoBar'))return; if(!isDemo())return; var bar=document.createElement('div'); bar.id='__demoBar'; bar.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#1f2937;color:#fff;font-size:13px;line-height:1.45;padding:9px 38px calc(9px + env(safe-area-inset-bottom)) 14px;text-align:center;font-family:sans-serif;box-shadow:0 -2px 10px rgba(0,0,0,0.25);'; bar.innerHTML='체험 모드예요 · 활동 기록은 이 기기에만 저장돼요(이어하기 가능). 선생님이 구글 시트를 연결하면 시트에 저장됩니다.'; var x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','닫기'); x.textContent='✕'; x.style.cssText='position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:16px;line-height:1;cursor:pointer;padding:6px;'; x.onclick=function(){ try{bar.remove();}catch(e){bar.style.display='none';} }; bar.appendChild(x); document.body.appendChild(bar); }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', show); } else { show(); }
+(function () {
+  function isDemo() {
+    try {
+      if (/[#&]c=/.test(location.hash || '')) return false;
+      for (var j=0;j<localStorage.length;j++){ var k=localStorage.key(j)||''; if(/exec|gas|serverurl|sheet_api|endpoint/i.test(k) && localStorage.getItem(k)) return false; }
+      return true;
+    } catch (e) { return true; }
+  }
+  function show() {
+    if (document.getElementById('__demoBar')) return;
+    if (!isDemo()) return;
+    var bar = document.createElement('div');
+    bar.id = '__demoBar';
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#1f2937;color:#fff;font-size:13px;line-height:1.45;padding:9px 38px calc(9px + env(safe-area-inset-bottom)) 14px;text-align:center;font-family:sans-serif;box-shadow:0 -2px 10px rgba(0,0,0,0.25);';
+    bar.textContent = '체험 모드예요 · 활동 기록은 이 기기에만 저장돼요. 선생님이 구글 시트를 연결하면 시트에 저장됩니다.';
+    var x = document.createElement('button');
+    x.type = 'button'; x.setAttribute('aria-label', '닫기'); x.textContent = '\u2715';
+    x.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:16px;line-height:1;cursor:pointer;padding:6px;';
+    x.onclick = function () { try { bar.remove(); } catch (e) { bar.style.display = 'none'; } };
+    bar.appendChild(x);
+    document.body.appendChild(bar);
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', show); } else { show(); }
 })();
 </script>
 </body>
