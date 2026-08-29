@@ -129,6 +129,31 @@ main{flex:1;overflow:hidden;padding:16px 34px;display:flex;flex-direction:column
 .sheet .srow{display:flex;gap:10px;margin-top:18px}
 .sheet .srow button{flex:1;border-radius:99px;padding:14px;font-size:20px}
 </style>
+<script>
+/* 다른 주소(깃허브 등)에서 열려도 막히지 않는 통로 */
+window.__gasJsonp = function (url, params, timeoutMs) {
+  return new Promise(function (resolve) {
+    if (!url) { resolve(null); return; }
+    var cb = '__enCb' + Date.now() + '_' + Math.floor(Math.random() * 1e6);
+    var s = document.createElement('script');
+    var done = false;
+    function cleanup() {
+      try { delete window[cb]; } catch (e) { window[cb] = undefined; }
+      if (s.parentNode) s.parentNode.removeChild(s);
+    }
+    window[cb] = function (d) { if (done) return; done = true; cleanup(); resolve(d); };
+    s.onerror = function () { if (done) return; done = true; cleanup(); resolve(null); };
+    setTimeout(function () { if (done) return; done = true; cleanup(); resolve(null); }, timeoutMs || 15000);
+    var qs = Object.keys(params || {}).map(function (k) {
+      var v = params[k];
+      if (typeof v === 'object') v = JSON.stringify(v);
+      return encodeURIComponent(k) + '=' + encodeURIComponent(v);
+    }).join('&');
+    s.src = url + (url.indexOf('?') < 0 ? '?' : '&') + (qs ? qs + '&' : '') + 'callback=' + cb;
+    document.body.appendChild(s);
+  });
+};
+</script>
 </head>
 <body>
 <div id="fit"><div id="stage">
@@ -231,6 +256,11 @@ function autoSpeak(t){if(speakerOn)speak(t);}
 /* GAS */
 async function gas(action,payload){
   if(!GAS_URL)return null;
+  // 읽기는 막히지 않는 통로로 먼저 요청합니다.
+  if(action==="getNames"){
+    const j0=await window.__gasJsonp(GAS_URL,{action:action,p:JSON.stringify(payload||{})});
+    if(j0) return j0.success?j0.data:null;
+  }
   try{const r=await fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({action},payload||{}))});const j=await r.json();return j.success?j.data:null;}catch(e){return null;}
 }
 // 기록을 저장하고, 연결된 상태에서 실패하면 학생에게 분명히 알린다.
